@@ -149,6 +149,8 @@ class CountryPickerTableViewController : UITableViewController {
         let selectedCountry: Country = self.countriesArr[indexPath.row]
         print("\(selectedCountry.name)")
         delegate?.didSelectCountry(country: selectedCountry)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
