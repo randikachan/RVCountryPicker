@@ -39,45 +39,52 @@ class Country {
 }
 
 class CountryManager {
-    
+    var countryListReady: Bool
     // Some countries have to be omitted because they don't have Flags
     var ommitedCountriesArr: [String] = []
     
     init() {
+        self.countryListReady = false
         self.ommitedCountriesArr = self.readFromJSON(fileName: "ommitedCountries")
     }
     
     func getCountries() -> [Country] {
         var countries: [Country] = []
-        var result: [Country] = []
         
-        var flagIndex: Int = 0
         for code in NSLocale.isoCountryCodes as [String] {
             let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
+            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
             
+            // Check if the country should be omitted
             if self.ommitedCountriesArr.contains(name) {
                 continue;
+                // else add it to the final result list
             } else {
                 let country = Country(countryCode: code, name: name, localeId: id)
+                
+                // Check if the image file name is available
                 if country.flagImage != nil {
-                    flagIndex += 1
                     countries.append(country)
                 } else {
-                    print(name)
+                    print("Error: Couldn't find a Flag Image for the Country: \(name)")
                 }
             }
         }
         
+        // Sort countries array in Alphabetical order
         countries = countries.sorted(by: {$0.name < $1.name})
-        
-        flagIndex = 0
+
+        // Add index according to the sorted array positioning
+        var flagIndex: Int = 0
         for country in countries {
-            flagIndex += 1
             country.index = flagIndex
-            result.append(country)
+            flagIndex += 1
         }
         return countries
+    }
+    
+    func processCountriesList() -> ProcessCountryListOperation {
+        return ProcessCountryListOperation(countryManager: self)
     }
     
     func readFromJSON(fileName: String) -> [String] {
@@ -99,15 +106,33 @@ class CountryManager {
         return []
     }
 }
-//
-//let countryManager = CountryManager()
 
-//let countries = countryManager.getCountries()
-
-//SL.index
-//SL.name
-//SL.flagImageName
-//SL.flagImage
+class ProcessCountryListOperation: Operation {
+    var countries: [Country]
+    let countryListManager: CountryManager
+    
+    init(countryManager: CountryManager) {
+        self.countries = []
+        self.countryListManager = countryManager
+        
+        super.init()
+        self.qualityOfService = .background
+        self.queuePriority = .veryHigh
+    }
+    
+    override func main() {
+        if isCancelled {
+            return
+        }
+        
+        if !self.countryListManager.countryListReady {
+            countries = self.countryListManager.getCountries()
+            self.countryListManager.countryListReady = true
+        } else {
+            return
+        }
+    }
+}
 
 protocol CountryPickerTableViewControllerDelegate: class {
     func didSelectCountry(country: Country?)
@@ -121,7 +146,28 @@ class CountryPickerTableViewController : UITableViewController {
     var countriesArr: [Country] = []
     
     override func viewDidLoad() {
-        self.countriesArr = countriesObj.getCountries()
+        print("ViewDidLoad")
+//        self.countriesArr = countriesObj.getCountries()
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        self.view.bringSubview(toFront: activityIndicator)
+        let processCountriesListOp = self.countriesObj.processCountriesList()
+
+        processCountriesListOp.completionBlock = {
+            self.countriesArr = processCountriesListOp.countries
+            
+            DispatchQueue.main.async {
+                activityIndicator.stopAnimating()
+                activityIndicator.removeFromSuperview()
+                
+                self.tableView.reloadData()
+            }
+        }
+        
+        let queue = OperationQueue()
+        queue.addOperation(processCountriesListOp)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -177,7 +223,7 @@ class HomeViewController : UIViewController, CountryPickerTableViewControllerDel
     }
     
     func didSelectCountry(country: Country?) {
-        print("Selected Country: \(country!.name)")
+        print("Selected Country: \(country!.name) | Index: \(country!.index)")
     }
 }
 
@@ -196,5 +242,4 @@ let homeViewController = HomeViewController()
 navigationController.pushViewController(homeViewController, animated: true)
 
 PlaygroundPage.current.liveView = navigationController
-
 
