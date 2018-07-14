@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountryListManager {
+public class CountryListManager {
 
         var countryListReady: Bool
         // Some countries have to be omitted because they don't have Flags
@@ -59,7 +59,8 @@ class CountryListManager {
         }
         
         func readFromJSON(fileName: String) -> [String] {
-            let fileURL = Bundle.main.url(forResource: "omittedCountries", withExtension: "json")
+            let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
+            let fileURL = bundle!.url(forResource: "omittedCountries", withExtension: "json")
             let content = try? Data(contentsOf: fileURL!)
             
             if content != nil {

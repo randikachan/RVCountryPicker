@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProcessCountryListOperation: Operation {
+public class ProcessCountryListOperation: Operation {
     var countries: [Country]
     let countryListManager: CountryListManager
     
@@ -21,7 +21,7 @@ class ProcessCountryListOperation: Operation {
         self.queuePriority = .veryHigh
     }
     
-    override func main() {
+    override public func main() {
         if isCancelled {
             return
         }

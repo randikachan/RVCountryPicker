@@ -6,6 +6,6 @@
 //  Copyright © 2018 HackerPunch. All rights reserved.
 //
 
-protocol CountryPickerTableViewControllerDelegate: class {
+public protocol CountryPickerTableViewControllerDelegate: class {
     func didSelectCountry(country: Country?)
 }

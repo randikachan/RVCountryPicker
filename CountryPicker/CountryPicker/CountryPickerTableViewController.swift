@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CountryPickerTableViewController: UITableViewController {
+public class CountryPickerTableViewController: UITableViewController {
     
-    weak var delegate: CountryPickerTableViewControllerDelegate?
+    weak public var delegate: CountryPickerTableViewControllerDelegate?
     
-    let countriesObj = CountryManager()
+    let countriesObj = CountryListManager()
     var countriesArr: [Country] = []
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         print("ViewDidLoad")
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.startAnimating()
@@ -39,15 +39,15 @@ class CountryPickerTableViewController: UITableViewController {
         
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.countriesArr.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         let country: Country = self.countriesArr[indexPath.row]
         cell.textLabel?.text = country.name
@@ -56,11 +56,11 @@ class CountryPickerTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Please select the country you live in"
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCountry: Country = self.countriesArr[indexPath.row]
         print("\(selectedCountry.name)")
         delegate?.didSelectCountry(country: selectedCountry)

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class Country: NSObject {
-    var isoCountryCode: String = ""
-    var name: String = ""
-    var localeId: String = ""
-    var index: Int = -1
-    var flagImageName: String? {
+public class Country: NSObject {
+    public var isoCountryCode: String = ""
+    public var name: String = ""
+    public var localeId: String = ""
+    public var index: Int = -1
+    public var flagImageName: String? {
         get {
             let imageName = name.replacingOccurrences(of: "-", with: "")
                 .replacingOccurrences(of: " ", with: "")
@@ -28,15 +28,16 @@ class Country: NSObject {
         set {
         }
     }
-    var flagImage: UIImage? {
+    public var flagImage: UIImage? {
         get {
-            return UIImage(named: flagImageName!)
+            let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
+            return UIImage(named: flagImageName!, in: bundle!, compatibleWith: nil)
         }
         set {
         }
     }
     
-    init(countryCode: String, name: String, localeId: String) {
+    public init(countryCode: String, name: String, localeId: String) {
         self.isoCountryCode = countryCode
         self.name = name
         self.localeId = localeId
