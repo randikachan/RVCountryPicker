@@ -11,6 +11,8 @@ import CountryPicker
 
 class ViewController: UIViewController {
 
+    let tableViewController = CountryPickerTableViewController(style: .plain)
+    
     @IBOutlet weak var countryTxtFld: UITextField!
     
     override func viewDidLoad() {
@@ -18,7 +20,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         countryTxtFld.delegate = self
-        print("COuntry")
     }
 
 }
@@ -34,10 +35,9 @@ extension ViewController : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        let tableViewController = CountryPickerTableViewController(style: .plain)
+
         tableViewController.delegate = self
-        print("Count: \(String(describing: self.navigationController?.viewControllers.count))")
+
         self.navigationController?.pushViewController(tableViewController, animated: true)
-        print("Editing")
     }
 }

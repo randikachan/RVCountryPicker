@@ -15,8 +15,9 @@ public class CountryPickerTableViewController: UITableViewController {
     let countriesObj = CountryListManager()
     var countriesArr: [Country] = []
     
-    override public func viewDidLoad() {
-        print("ViewDidLoad")
+    override public func viewWillAppear(_ animated: Bool) {
+        print("ViewWill Appear")
+        
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
@@ -36,7 +37,9 @@ public class CountryPickerTableViewController: UITableViewController {
         
         let queue = OperationQueue()
         queue.addOperation(processCountriesListOp)
-        
+    }
+    
+    override public func viewDidLoad() {
     }
     
     override public func numberOfSections(in tableView: UITableView) -> Int {
