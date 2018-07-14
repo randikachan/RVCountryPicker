@@ -207,14 +207,16 @@ let navigationController = UINavigationController()
 
 class HomeViewController : UIViewController, CountryPickerTableViewControllerDelegate {
     
+    var countryTxtFld: UITextField = UITextField()
+    
     override func viewDidLoad() {
         
-        let countryTxtFldLbl: UILabel = UILabel(frame: CGRect(x: 25, y: 55, width: 300, height: 40))
+        var countryTxtFldLbl: UILabel = UILabel(frame: CGRect(x: 25, y: 55, width: 300, height: 40))
         countryTxtFldLbl.text = "Pick your country"
         countryTxtFldLbl.textColor = #colorLiteral(red: 0.4980392157, green: 0.2509803922, blue: 0.2431372549, alpha: 1)
         view.addSubview(countryTxtFldLbl)
         
-        let countryTxtFld: UITextField = UITextField(frame: CGRect(x: 25, y: 95, width: 300, height: 40))
+        countryTxtFld = UITextField(frame: CGRect(x: 25, y: 95, width: 300, height: 40))
         countryTxtFld.backgroundColor = #colorLiteral(red: 0.9745097756, green: 0.4546509981, blue: 0.4343925714, alpha: 1)
         countryTxtFld.delegate = self
         view.addSubview(countryTxtFld)
@@ -224,6 +226,7 @@ class HomeViewController : UIViewController, CountryPickerTableViewControllerDel
     
     func didSelectCountry(country: Country?) {
         print("Selected Country: \(country!.name) | Index: \(country!.index)")
+        self.countryTxtFld.text = country!.name
     }
 }
 
