@@ -147,7 +147,6 @@ class CountryPickerTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         print("ViewDidLoad")
-//        self.countriesArr = countriesObj.getCountries()
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
