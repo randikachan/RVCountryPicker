@@ -16,27 +16,23 @@ public class CountryPickerTableViewController: UITableViewController {
     var countriesArr: [Country] = []
     
     override public func viewWillAppear(_ animated: Bool) {
-        print("ViewWill Appear")
-        
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicator.startAnimating()
-        self.view.addSubview(activityIndicator)
-        self.view.bringSubview(toFront: activityIndicator)
-        
         if self.countryListManagerObj.countryListReady {
             self.countriesArr = countryListManagerObj.countries
         } else {
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator.startAnimating()
+            self.view.addSubview(activityIndicator)
+            self.view.bringSubview(toFront: activityIndicator)
+            
             let processCountriesListOp = self.countryListManagerObj.processCountriesList()
             
             processCountriesListOp.completionBlock = {
-                print("completion block")
                 self.countriesArr = self.countryListManagerObj.countries
                 
                 DispatchQueue.main.async {
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
                     
-                    print("reload tableView \(self.countriesArr.count)")
                     self.tableView.reloadData()
                 }
             }
@@ -45,9 +41,6 @@ public class CountryPickerTableViewController: UITableViewController {
             queue.addOperation(processCountriesListOp)
 
         }
-    }
-    
-    override public func viewDidLoad() {
     }
     
     override public func numberOfSections(in tableView: UITableView) -> Int {
