@@ -12,7 +12,7 @@ public class CountryPickerTableViewController: UITableViewController {
     
     weak public var delegate: CountryPickerTableViewControllerDelegate?
     
-    let countriesObj = CountryListManager()
+    let countryListManagerObj = CountryListManager()
     var countriesArr: [Country] = []
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -22,21 +22,29 @@ public class CountryPickerTableViewController: UITableViewController {
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
         self.view.bringSubview(toFront: activityIndicator)
-        let processCountriesListOp = self.countriesObj.processCountriesList()
         
-        processCountriesListOp.completionBlock = {
-            self.countriesArr = processCountriesListOp.countries
+        if self.countryListManagerObj.countryListReady {
+            self.countriesArr = countryListManagerObj.countries
+        } else {
+            let processCountriesListOp = self.countryListManagerObj.processCountriesList()
             
-            DispatchQueue.main.async {
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
+            processCountriesListOp.completionBlock = {
+                print("completion block")
+                self.countriesArr = self.countryListManagerObj.countries
                 
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
+                    
+                    print("reload tableView \(self.countriesArr.count)")
+                    self.tableView.reloadData()
+                }
             }
+            
+            let queue = OperationQueue()
+            queue.addOperation(processCountriesListOp)
+
         }
-        
-        let queue = OperationQueue()
-        queue.addOperation(processCountriesListOp)
     }
     
     override public func viewDidLoad() {

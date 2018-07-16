@@ -9,11 +9,9 @@
 import UIKit
 
 public class ProcessCountryListOperation: Operation {
-    var countries: [Country]
     let countryListManager: CountryListManager
     
     init(countryListManager: CountryListManager) {
-        self.countries = []
         self.countryListManager = countryListManager
         
         super.init()
@@ -27,9 +25,11 @@ public class ProcessCountryListOperation: Operation {
         }
         
         if !self.countryListManager.countryListReady {
-            countries = self.countryListManager.getCountries()
+            self.countryListManager.countries = self.countryListManager.getCountries()
+            print("1 Operation: \(self.self.countryListManager.countries.count)")
             self.countryListManager.countryListReady = true
         } else {
+            print("2 Operation: \(self.self.countryListManager.countries.count)")
             return
         }
     }

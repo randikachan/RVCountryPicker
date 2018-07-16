@@ -13,6 +13,7 @@ public class CountryListManager {
         var countryListReady: Bool
         // Some countries have to be omitted because they don't have Flags
         var ommitedCountriesArr: [String] = []
+        var countries: [Country] = []
         
         init() {
             self.countryListReady = false
