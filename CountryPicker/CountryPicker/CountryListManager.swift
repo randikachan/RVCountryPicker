@@ -9,11 +9,16 @@
 import UIKit
 
 public class CountryListManager {
+    
+    // MARK: - Properties
+    static public let shared = CountryListManager()
+    
+    // MARK: -
     var countryListReady: Bool
-    // Some countries have to be omitted because they don't have Flags
-    var ommitedCountriesArr: [String] = []
+    var ommitedCountriesArr: [String] = []  // Some countries have to be omitted because they don't have Flags
     var countries: [Country] = []
     
+    // Initialization
     init() {
         self.countryListReady = false
         self.ommitedCountriesArr = self.readFromJSON(fileName: "ommitedCountries")
@@ -54,7 +59,8 @@ public class CountryListManager {
         return countries
     }
 
-    func processCountriesList(countryListManager: CountryListManager, withCompletionBlock: @escaping () -> ()) {
+    // Explicitly initiating the Countries list before the TableViewController is initiated or loaded
+    public func processCountriesList(countryListManager: CountryListManager, withCompletionBlock: @escaping () -> ()) {
         let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
         
         processCountryListOperation.completionBlock = {
@@ -65,6 +71,7 @@ public class CountryListManager {
         queue.addOperation(processCountryListOperation)
     }
     
+    // Implicitly initiating within the library 
     func processCountriesList() -> ProcessCountryListOperation {
         return ProcessCountryListOperation(countryListManager: self)
     }

@@ -12,21 +12,20 @@ public class CountryPickerTableViewController: UITableViewController {
     
     weak public var delegate: CountryPickerTableViewControllerDelegate?
     
-    let countryListManagerObj = CountryListManager()
     var countriesArr: [Country] = []
     
     override public func viewWillAppear(_ animated: Bool) {
-        if self.countryListManagerObj.countryListReady {
-            self.countriesArr = countryListManagerObj.countries
+        if CountryListManager.shared.countryListReady {
+            self.countriesArr = CountryListManager.shared.countries
         } else {
+            let countryListManager = CountryListManager.shared
+            
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             activityIndicator.startAnimating()
             self.view.addSubview(activityIndicator)
             self.view.bringSubview(toFront: activityIndicator)
             
-            self.countryListManagerObj.processCountriesList(countryListManager: self.countryListManagerObj, withCompletionBlock: {
-                self.countriesArr = self.countryListManagerObj.countries
-                
+            countryListManager.processCountriesList(countryListManager: countryListManager, withCompletionBlock: {
                 DispatchQueue.main.async {
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
