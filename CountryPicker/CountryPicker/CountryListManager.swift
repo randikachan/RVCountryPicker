@@ -54,8 +54,17 @@ public class CountryListManager {
         return countries
     }
 
-
-
+    func processCountriesList(countryListManager: CountryListManager, withCompletionBlock: @escaping () -> ()) {
+        let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
+        
+        processCountryListOperation.completionBlock = {
+            withCompletionBlock()
+        }
+        
+        let queue = OperationQueue()
+        queue.addOperation(processCountryListOperation)
+    }
+    
     func processCountriesList() -> ProcessCountryListOperation {
         return ProcessCountryListOperation(countryListManager: self)
     }

@@ -24,9 +24,7 @@ public class CountryPickerTableViewController: UITableViewController {
             self.view.addSubview(activityIndicator)
             self.view.bringSubview(toFront: activityIndicator)
             
-            let processCountriesListOp = self.countryListManagerObj.processCountriesList()
-            
-            processCountriesListOp.completionBlock = {
+            self.countryListManagerObj.processCountriesList(countryListManager: self.countryListManagerObj, withCompletionBlock: {
                 self.countriesArr = self.countryListManagerObj.countries
                 
                 DispatchQueue.main.async {
@@ -35,11 +33,7 @@ public class CountryPickerTableViewController: UITableViewController {
                     
                     self.tableView.reloadData()
                 }
-            }
-            
-            let queue = OperationQueue()
-            queue.addOperation(processCountriesListOp)
-
+            })
         }
     }
     
