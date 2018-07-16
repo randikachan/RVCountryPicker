@@ -17,8 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let countryListManager = CountryListManager.shared
-        countryListManager.processCountriesList(countryListManager: countryListManager, withCompletionBlock: {
-        })
+        countryListManager.processCountriesList(countryListManager: countryListManager)
             
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)

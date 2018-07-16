@@ -71,9 +71,11 @@ public class CountryListManager {
         queue.addOperation(processCountryListOperation)
     }
     
-    // Implicitly initiating within the library 
-    func processCountriesList() -> ProcessCountryListOperation {
-        return ProcessCountryListOperation(countryListManager: self)
+    // Where no completion block for processing countries list is needed, use this method
+    public func processCountriesList(countryListManager: CountryListManager) {
+        let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
+        let queue = OperationQueue()
+        queue.addOperation(processCountryListOperation)
     }
     
     func readFromJSON(fileName: String) -> [String] {
