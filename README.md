@@ -14,6 +14,8 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
 * Search Bar and enableSearchBar
 * Indexed Scroll Bar implementation and enableIndexedScrollBar
 * CountryPickerGridViewController & CountryPickerGridView
+* Flag images optimization
+* iOS Default Picker view customization along with a searchbar
 * UI Theming options
 
 #### Note:
@@ -22,7 +24,7 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
     - Don't forget to check out the Demo project simple implementation to get some more ideas.
 
 
-##License
+## License
 This source code is made available under the MIT License.
 
 ```sh
