@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     let tableViewController = CountryPickerTableViewController(style: .plain)
     
     @IBOutlet weak var countryTxtFld: UITextField!
+    @IBOutlet weak var countryFlagImgVw: UIImageView!
+    @IBOutlet weak var countryCodeLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,11 @@ class ViewController: UIViewController {
 extension ViewController : CountryPickerTableViewControllerDelegate {
     
     func didSelectCountry(country: Country?) {
-        self.countryTxtFld.text = country?.name
+        if country != nil {
+            self.countryTxtFld.text = country?.name
+            self.countryFlagImgVw.image = country?.flagImage
+            self.countryCodeLbl.text = "ISO Country Code: \(country!.isoCountryCode)"
+        }
     }
 }
 
