@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,10 +40,10 @@
                                 <color key="textColor" red="0.95686274510000002" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J8s-aU-G2P">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J8s-aU-G2P" customClass="UserTextField" customModule="CountryPickerDemo" customModuleProvider="target">
                                 <rect key="frame" x="40" y="134" width="295" height="44"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.95686274510000002" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1ZV-C6-EDQ"/>
                                     <constraint firstAttribute="width" constant="295" id="yow-px-JLa"/>
@@ -51,19 +52,44 @@
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IIv-Fz-eYR">
+                                <rect key="frame" x="40" y="210" width="295" height="295"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IIv-Fz-eYR" secondAttribute="height" multiplier="1:1" id="pDv-IT-nOg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dw-hq-T5b">
+                                <rect key="frame" x="40" y="530" width="295" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="295" id="Ezv-Pt-azp"/>
+                                    <constraint firstAttribute="height" constant="31" id="oz5-eK-RG9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ayd-hf-JMK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="0NK-P3-jYr"/>
+                            <constraint firstItem="3dw-hq-T5b" firstAttribute="top" secondItem="IIv-Fz-eYR" secondAttribute="bottom" constant="25" id="5Qh-NT-wFk"/>
                             <constraint firstItem="J8s-aU-G2P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="6tQ-Yj-aRn"/>
                             <constraint firstItem="J8s-aU-G2P" firstAttribute="top" secondItem="ayd-hf-JMK" secondAttribute="bottom" constant="12" id="AWu-u0-M7Y"/>
                             <constraint firstItem="ayd-hf-JMK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="KOg-Qt-h1e"/>
+                            <constraint firstItem="3dw-hq-T5b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="QBn-UO-ZiL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J8s-aU-G2P" secondAttribute="trailing" constant="40" id="Rqi-us-NaM"/>
+                            <constraint firstItem="IIv-Fz-eYR" firstAttribute="top" secondItem="J8s-aU-G2P" secondAttribute="bottom" constant="32" id="f3a-x8-fUk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IIv-Fz-eYR" secondAttribute="trailing" constant="40" id="mv1-yu-XGT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ayd-hf-JMK" secondAttribute="trailing" constant="90" id="raX-ZO-f8E"/>
+                            <constraint firstItem="IIv-Fz-eYR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="uar-4v-YDj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3dw-hq-T5b" secondAttribute="trailing" constant="40" id="y5C-sA-9C7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="countryCodeLbl" destination="3dw-hq-T5b" id="zSG-z3-Nwm"/>
+                        <outlet property="countryFlagImgVw" destination="IIv-Fz-eYR" id="8Wb-3c-Rh6"/>
                         <outlet property="countryTxtFld" destination="J8s-aU-G2P" id="ZYn-ne-OKT"/>
                     </connections>
                 </viewController>

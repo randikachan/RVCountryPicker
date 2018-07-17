@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2005507F20FE754900E5F485 /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2005507E20FE754900E5F485 /* UserTextField.swift */; };
 		204CBECF20FA83B9004FD7E2 /* CountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B5486E20FA80A5000AF085 /* CountryPicker.framework */; };
 		204CBED020FA83B9004FD7E2 /* CountryPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20B5486E20FA80A5000AF085 /* CountryPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20B5485220FA8069000AF085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5485120FA8069000AF085 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2005507E20FE754900E5F485 /* UserTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
 		20B5484E20FA8069000AF085 /* CountryPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B5485120FA8069000AF085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B5485320FA8069000AF085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2005507D20FE753000E5F485 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				2005507E20FE754900E5F485 /* UserTextField.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
 		20B5484520FA8069000AF085 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		20B5485020FA8069000AF085 /* CountryPickerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2005507D20FE753000E5F485 /* UIElements */,
 				20B5485120FA8069000AF085 /* AppDelegate.swift */,
 				20B5485320FA8069000AF085 /* ViewController.swift */,
 				20B5485520FA8069000AF085 /* Main.storyboard */,
@@ -200,6 +211,7 @@
 			files = (
 				20B5485420FA8069000AF085 /* ViewController.swift in Sources */,
 				20B5485220FA8069000AF085 /* AppDelegate.swift in Sources */,
+				2005507F20FE754900E5F485 /* UserTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
