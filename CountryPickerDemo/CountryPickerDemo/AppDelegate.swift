@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CountryPicker
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let countryListManager = CountryListManager.shared
+        countryListManager.processCountriesList(countryListManager: countryListManager)
+            
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

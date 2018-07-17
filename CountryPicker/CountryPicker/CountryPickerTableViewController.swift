@@ -12,34 +12,29 @@ public class CountryPickerTableViewController: UITableViewController {
     
     weak public var delegate: CountryPickerTableViewControllerDelegate?
     
-    let countriesObj = CountryListManager()
     var countriesArr: [Country] = []
     
     override public func viewWillAppear(_ animated: Bool) {
-        print("ViewWill Appear")
-        
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicator.startAnimating()
-        self.view.addSubview(activityIndicator)
-        self.view.bringSubview(toFront: activityIndicator)
-        let processCountriesListOp = self.countriesObj.processCountriesList()
-        
-        processCountriesListOp.completionBlock = {
-            self.countriesArr = processCountriesListOp.countries
+        if CountryListManager.shared.countryListReady {
+            self.countriesArr = CountryListManager.shared.countries
+            self.tableView.reloadData()
+        } else {
+            let countryListManager = CountryListManager.shared
             
-            DispatchQueue.main.async {
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
-                
-                self.tableView.reloadData()
-            }
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator.startAnimating()
+            self.view.addSubview(activityIndicator)
+            self.view.bringSubview(toFront: activityIndicator)
+            
+            countryListManager.processCountriesList(countryListManager: countryListManager, withCompletionBlock: {
+                DispatchQueue.main.async {
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
+                    
+                    self.tableView.reloadData()
+                }
+            })
         }
-        
-        let queue = OperationQueue()
-        queue.addOperation(processCountriesListOp)
-    }
-    
-    override public func viewDidLoad() {
     }
     
     override public func numberOfSections(in tableView: UITableView) -> Int {
