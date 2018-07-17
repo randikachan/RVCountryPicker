@@ -3,7 +3,7 @@
 Country Picker with flags for iOS iPhone Apps, written in Swift. Currently support 226 countries.
 
 <p align="center">
-<img src="https://i.imgur.com/1gnTA4z.png" width="2000" height="592" alt="Real Device iPhone6S Vs iPhone6S Simulator"/><br/>
+<img src="https://i.imgur.com/1gnTA4z.png" width="2000" height="550" alt="Real Device iPhone6S Vs iPhone6S Simulator"/><br/>
 <span> Screenshots of the demo app to show the methods </span>
 </p>
 </p>
