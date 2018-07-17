@@ -26,7 +26,7 @@ public class CountryListManager {
     
     func getCountries() -> [Country] {
         var countries: [Country] = []
-        
+
         for code in NSLocale.isoCountryCodes as [String] {
             let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
             let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
@@ -36,6 +36,7 @@ public class CountryListManager {
                 continue;
                 // else add it to the final result list
             } else {
+                // Create a country object
                 let country = Country(countryCode: code, name: name, localeId: id)
                 
                 // Check if the image file name is available
