@@ -16,11 +16,9 @@ public class CountryPickerTableViewController: UITableViewController {
     
     override public func viewWillAppear(_ animated: Bool) {
         if CountryListManager.shared.countryListReady {
-            print("1111")
             self.countriesArr = CountryListManager.shared.countries
             self.tableView.reloadData()
         } else {
-            print("2222")
             let countryListManager = CountryListManager.shared
             
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)

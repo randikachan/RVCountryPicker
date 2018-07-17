@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2005507C20FE537B00E5F485 /* unitedstates.png in Resources */ = {isa = PBXBuildFile; fileRef = 2005507B20FE537B00E5F485 /* unitedstates.png */; };
 		204CBFE320FA8FF4004FD7E2 /* france.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBEDE20FA8FD1004FD7E2 /* france.png */; };
 		204CBFE420FA8FF4004FD7E2 /* republicofthecongo.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBEDF20FA8FD1004FD7E2 /* republicofthecongo.png */; };
 		204CBFE520FA8FF4004FD7E2 /* jersey.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBEE020FA8FD1004FD7E2 /* jersey.png */; };
@@ -277,6 +278,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2005507B20FE537B00E5F485 /* unitedstates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unitedstates.png; sourceTree = "<group>"; };
 		204CBEDE20FA8FD1004FD7E2 /* france.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = france.png; sourceTree = "<group>"; };
 		204CBEDF20FA8FD1004FD7E2 /* republicofthecongo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = republicofthecongo.png; sourceTree = "<group>"; };
 		204CBEE020FA8FD1004FD7E2 /* jersey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jersey.png; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 				204CBFC020FA8FEF004FD7E2 /* oman.png */,
 				204CBF8920FA8FE7004FD7E2 /* omittedCountries.json */,
 				204CBFCD20FA8FF1004FD7E2 /* ossetia.png */,
+				2005507B20FE537B00E5F485 /* unitedstates.png */,
 				204CBFCC20FA8FF1004FD7E2 /* pakistan.png */,
 				204CBF2020FA8FD8004FD7E2 /* palau.png */,
 				204CBF6620FA8FE2004FD7E2 /* palestine.png */,
@@ -1186,6 +1189,7 @@
 				204CC0B820FA8FF5004FD7E2 /* somaliland.png in Resources */,
 				204CC0E520FA8FF5004FD7E2 /* portugal.png in Resources */,
 				204CC07E20FA8FF5004FD7E2 /* europeanunion.png in Resources */,
+				2005507C20FE537B00E5F485 /* unitedstates.png in Resources */,
 				204CC06320FA8FF4004FD7E2 /* brunei.png in Resources */,
 				204CBFF920FA8FF4004FD7E2 /* turksandcaicos.png in Resources */,
 				204CC03F20FA8FF4004FD7E2 /* cambodia.png in Resources */,
