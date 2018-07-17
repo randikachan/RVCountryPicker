@@ -22,6 +22,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Country Picker"
 
+        // CountryPickerTableViewDelegate
+        tableViewController.delegate = self
+        
+        // TextFieldDelegate
         countryTxtFld.delegate = self
     }
 }
@@ -41,9 +45,6 @@ extension ViewController : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-
-        tableViewController.delegate = self
-
         self.navigationController?.pushViewController(tableViewController, animated: true)
     }
 }
