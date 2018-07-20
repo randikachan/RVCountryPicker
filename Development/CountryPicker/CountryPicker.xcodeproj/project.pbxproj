@@ -830,6 +830,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		20946D5921027EB1005C07D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				20B5483320FA78D1000AF085 /* CountryPicker.h */,
+				20B5483B20FA7984000AF085 /* Country.swift */,
+				20B5483D20FA79BA000AF085 /* CountryListManager.swift */,
+				20B5483F20FA79EC000AF085 /* ProcessCountryListOperation.swift */,
+				20B5484120FA7A6C000AF085 /* CountryPickerTableViewControllerDelegate.swift */,
+				20B5484320FA7AFD000AF085 /* CountryPickerTableViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		20B5482620FA78D1000AF085 = {
 			isa = PBXGroup;
 			children = (
@@ -849,14 +862,9 @@
 		20B5483220FA78D1000AF085 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
+				20946D5921027EB1005C07D2 /* Classes */,
 				204CBEDD20FA8FAC004FD7E2 /* Resources */,
-				20B5483320FA78D1000AF085 /* CountryPicker.h */,
 				20B5483420FA78D1000AF085 /* Info.plist */,
-				20B5483B20FA7984000AF085 /* Country.swift */,
-				20B5483D20FA79BA000AF085 /* CountryListManager.swift */,
-				20B5483F20FA79EC000AF085 /* ProcessCountryListOperation.swift */,
-				20B5484120FA7A6C000AF085 /* CountryPickerTableViewControllerDelegate.swift */,
-				20B5484320FA7AFD000AF085 /* CountryPickerTableViewController.swift */,
 			);
 			path = CountryPicker;
 			sourceTree = "<group>";
