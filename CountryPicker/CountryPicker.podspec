@@ -99,7 +99,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = "Classes/**/*.h"
 
-  s.source_files = "*.swift"
+  s.source_files = "CountryPicker/CountryPicker/Classes/*.swift"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -110,7 +110,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "CountryPicker/Resources/*.{png,json}"
+  s.resources = "CountryPicker/CountryPicker/Resources/*.{png,json}"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -138,5 +138,8 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+
+  # s.swift_version = "4.2" 
+  `echo "4.2" > .swift-version` # ---> delete this and run the lint it will be given an error!
 
 end
