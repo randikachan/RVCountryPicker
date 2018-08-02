@@ -15,6 +15,16 @@
 		20B5485C20FA8069000AF085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B5485A20FA8069000AF085 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		209FC5CD211382EC00FE501D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209FC5C9211382EC00FE501D /* CountryPicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20B5483020FA78D1000AF085;
+			remoteInfo = CountryPicker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		204CBED320FA83B9004FD7E2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -30,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		2005507E20FE754900E5F485 /* UserTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
+		209FC5C9211382EC00FE501D /* CountryPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CountryPicker.xcodeproj; path = ../CountryPicker/CountryPicker.xcodeproj; sourceTree = "<group>"; };
 		20B5484E20FA8069000AF085 /* CountryPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B5485120FA8069000AF085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B5485320FA8069000AF085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,9 +69,18 @@
 			path = UIElements;
 			sourceTree = "<group>";
 		};
+		209FC5CA211382EC00FE501D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				209FC5CE211382EC00FE501D /* CountryPicker.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		20B5484520FA8069000AF085 = {
 			isa = PBXGroup;
 			children = (
+				209FC5C9211382EC00FE501D /* CountryPicker.xcodeproj */,
 				20B5485020FA8069000AF085 /* CountryPickerDemo */,
 				20B5484F20FA8069000AF085 /* Products */,
 			);
@@ -136,12 +156,28 @@
 			mainGroup = 20B5484520FA8069000AF085;
 			productRefGroup = 20B5484F20FA8069000AF085 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 209FC5CA211382EC00FE501D /* Products */;
+					ProjectRef = 209FC5C9211382EC00FE501D /* CountryPicker.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				20B5484D20FA8069000AF085 /* CountryPickerDemo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		209FC5CE211382EC00FE501D /* CountryPicker.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CountryPicker.framework;
+			remoteRef = 209FC5CD211382EC00FE501D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		20B5484C20FA8069000AF085 /* Resources */ = {
