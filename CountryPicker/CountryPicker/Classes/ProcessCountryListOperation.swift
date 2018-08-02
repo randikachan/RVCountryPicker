@@ -26,7 +26,6 @@ public class ProcessCountryListOperation: Operation {
         
         if !self.countryListManager.countryListReady {
             self.countryListManager.countries = self.countryListManager.getCountries()
-            print("Countries Count: \(self.countryListManager.countries.count)")
             self.countryListManager.countryListReady = true
         } else {
             return

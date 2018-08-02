@@ -25,7 +25,6 @@ public class CountryListManager {
     }
     
     func getCountries() -> [Country] {
-        print("getCountries")
         let countries = NSLocale.isoCountryCodes.map { (code:String) -> String in
             let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
             return NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
@@ -36,11 +35,9 @@ public class CountryListManager {
         for name in countries {
             // Check if the country should be omitted
             if self.ommitedCountriesArr.contains(name) {
-                print("CountryName: \(name)")
                 continue;
                 // else add it to the final result list
             } else {
-                print("1 CountryName: \(name)")
                 // Create a country object
                 let country = Country(countryCode: "code", name: name, localeId: "id")
                 
@@ -72,7 +69,6 @@ public class CountryListManager {
         
         processCountryListOperation.completionBlock = {
             withCompletionBlock(countryListManager.countries)
-            print("With Completion Block \(countryListManager.countries.count)")
         }
         
         let queue = OperationQueue()
