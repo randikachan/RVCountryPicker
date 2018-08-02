@@ -31,6 +31,7 @@ public class CountryListManager {
         }
         
         var countriesArr: [Country] = []
+        let countryFlagImageArr = getFlagImageFilesList()
         
         for name in countries {
             // Check if the country should be omitted
@@ -42,7 +43,7 @@ public class CountryListManager {
                 let country = Country(countryCode: "code", name: name, localeId: "id")
                 
                 // Check if the image file name is available
-                if country.flagImage != nil {
+                if countryFlagImageArr.contains(country.flagImageName!) {
                     countriesArr.append(country)
                 } else {
                     print("Error: Couldn't find a Flag Image for the Country: \(name)")
@@ -80,6 +81,18 @@ public class CountryListManager {
         let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
         let queue = OperationQueue()
         queue.addOperation(processCountryListOperation)
+    }
+    
+    func getFlagImageFilesList() -> [String] {
+        let bundle = Bundle.init(for: CountryListManager.self)
+        let documentsInDirectory = bundle.paths(forResourcesOfType: ".png", inDirectory: nil)
+        
+        var documentsList: [String] = []
+        for document in documentsInDirectory {
+            documentsList.append((document as NSString).lastPathComponent.replacingOccurrences(of: ".png", with: ""))
+        }
+        
+        return documentsList
     }
     
     func readFromJSON(fileName: String) -> [String] {
