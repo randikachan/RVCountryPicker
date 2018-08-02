@@ -25,23 +25,28 @@ public class CountryListManager {
     }
     
     func getCountries() -> [Country] {
-        var countries: [Country] = []
-
-        for code in NSLocale.isoCountryCodes as [String] {
+        print("getCountries")
+        let countries = NSLocale.isoCountryCodes.map { (code:String) -> String in
             let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
-            
+            return NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
+        }
+        
+        var countriesArr: [Country] = []
+        
+        for name in countries {
             // Check if the country should be omitted
             if self.ommitedCountriesArr.contains(name) {
+                print("CountryName: \(name)")
                 continue;
                 // else add it to the final result list
             } else {
+                print("1 CountryName: \(name)")
                 // Create a country object
-                let country = Country(countryCode: code, name: name, localeId: id)
+                let country = Country(countryCode: "code", name: name, localeId: "id")
                 
                 // Check if the image file name is available
                 if country.flagImage != nil {
-                    countries.append(country)
+                    countriesArr.append(country)
                 } else {
                     print("Error: Couldn't find a Flag Image for the Country: \(name)")
                 }
@@ -49,23 +54,25 @@ public class CountryListManager {
         }
         
         // Sort countries array in Alphabetical order
-        countries = countries.sorted(by: {$0.name < $1.name})
+        countriesArr = countriesArr.sorted(by: {$0.name < $1.name})
         
         // Add index according to the sorted array positioning
         var flagIndex: Int = 0
-        for country in countries {
+        for country in countriesArr {
             country.index = flagIndex
             flagIndex += 1
         }
-        return countries
+        return countriesArr
     }
 
+
     // Explicitly initiating the Countries list before the TableViewController is initiated or loaded
-    public func processCountriesList(countryListManager: CountryListManager, withCompletionBlock: @escaping () -> ()) {
-        let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
+    public func processCountriesList(countryListManager: CountryListManager, withCompletionBlock: @escaping (_ countriesArr: [Country]) -> Void) {
+        let processCountryListOperation = ProcessCountryListOperation(countryListManager: countryListManager)
         
         processCountryListOperation.completionBlock = {
-            withCompletionBlock()
+            withCompletionBlock(countryListManager.countries)
+            print("With Completion Block \(countryListManager.countries.count)")
         }
         
         let queue = OperationQueue()
@@ -80,8 +87,9 @@ public class CountryListManager {
     }
     
     func readFromJSON(fileName: String) -> [String] {
-        let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
-        let fileURL = bundle!.url(forResource: "omittedCountries", withExtension: "json")
+        // let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
+        let bundle = Bundle.init(for: CountryListManager.self)
+        let fileURL = bundle.url(forResource: "omittedCountries", withExtension: "json")
         let content = try? Data(contentsOf: fileURL!)
         
         if content != nil {

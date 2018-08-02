@@ -30,8 +30,8 @@ public class Country: NSObject {
     }
     public var flagImage: UIImage? {
         get {
-            let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
-            return UIImage(named: flagImageName!, in: bundle!, compatibleWith: nil)
+            let bundle = Bundle(for: Country.self)
+            return UIImage(named: flagImageName!, in: bundle, compatibleWith: nil)
         }
         set {
         }

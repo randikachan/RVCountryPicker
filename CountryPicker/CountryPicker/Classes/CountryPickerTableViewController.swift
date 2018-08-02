@@ -17,6 +17,7 @@ public class CountryPickerTableViewController: UITableViewController {
     override public func viewWillAppear(_ animated: Bool) {
         if CountryListManager.shared.countryListReady {
             self.countriesArr = CountryListManager.shared.countries
+            print("Countries: \(self.countriesArr.count)")
             self.tableView.reloadData()
         } else {
             let countryListManager = CountryListManager.shared
@@ -26,14 +27,17 @@ public class CountryPickerTableViewController: UITableViewController {
             self.view.addSubview(activityIndicator)
             self.view.bringSubview(toFront: activityIndicator)
             
-            countryListManager.processCountriesList(countryListManager: countryListManager, withCompletionBlock: {
+            countryListManager.processCountriesList(countryListManager: countryListManager) { countriesArr in
+                self.countriesArr = countriesArr
+                print("1 Countries: \(self.countriesArr.count)")
+                
                 DispatchQueue.main.async {
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
                     
                     self.tableView.reloadData()
                 }
-            })
+            }
         }
     }
     
