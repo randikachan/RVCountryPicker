@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CountryPicker"
-  s.version      = "1.0"
+  s.version      = "1.2"
   s.summary      = "Swift iOS library for CountryPicker and Countries List with images!"
   s.description  = <<-DESC
                   Swift iOS library for CountryPicker and Countries List with flag images for around 226 countries!
