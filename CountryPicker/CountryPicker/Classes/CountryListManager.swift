@@ -17,30 +17,29 @@ public class CountryListManager {
     var countryListReady: Bool
     var ommitedCountriesArr: [String] = []  // Some countries have to be omitted because they don't have Flags
     var countries: [Country] = []
+    var countryFlagImageArr: [String] = []
     
     // Initialization
     init() {
         self.countryListReady = false
         self.ommitedCountriesArr = self.readFromJSON(fileName: "ommitedCountries")
+        self.countryFlagImageArr = getFlagImageFilesList()
     }
     
     func getCountries() -> [Country] {
-        let countries = NSLocale.isoCountryCodes.map { (code:String) -> String in
-            let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-            return NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Error: Country not found for code: \(code)"
-        }
-        
         var countriesArr: [Country] = []
-        let countryFlagImageArr = getFlagImageFilesList()
         
-        for name in countries {
+        for code in NSLocale.isoCountryCodes as [String] {
+            let localeIdentifier = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
+            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: localeIdentifier) ?? "Error: Country not found for code: \(code)"
+            
             // Check if the country should be omitted
             if self.ommitedCountriesArr.contains(name) {
                 continue;
                 // else add it to the final result list
             } else {
                 // Create a country object
-                let country = Country(countryCode: "code", name: name, localeId: "id")
+                let country = Country(countryCode: code, name: name, localeId: localeIdentifier)
                 
                 // Check if the image file name is available
                 if countryFlagImageArr.contains(country.flagImageName!) {
