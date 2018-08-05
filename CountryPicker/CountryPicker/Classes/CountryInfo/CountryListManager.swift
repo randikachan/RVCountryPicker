@@ -22,8 +22,8 @@ public class CountryListManager {
     // Initialization
     init() {
         self.countryListReady = false
-        self.ommitedCountriesArr = self.readFromJSON(fileName: "omittedCountries", fileExtension: "json")
-        self.countryFlagImageArr = getLocalFilesList(fileType: ".png")
+        self.ommitedCountriesArr = FileHandler.readFromJSON(fileName: "omittedCountries", fileExtension: "json")
+        self.countryFlagImageArr = FileHandler.getLocalFilesList(fileType: ".png")
     }
     
     func getCountries() -> [Country] {
@@ -80,38 +80,5 @@ public class CountryListManager {
         let processCountryListOperation = ProcessCountryListOperation(countryListManager: self)
         let queue = OperationQueue()
         queue.addOperation(processCountryListOperation)
-    }
-    
-    func getLocalFilesList(fileType: String) -> [String] {
-        let bundle = Bundle.init(for: CountryListManager.self)
-        let documentsInDirectory = bundle.paths(forResourcesOfType: fileType, inDirectory: nil)
-        
-        var documentsList: [String] = []
-        for document in documentsInDirectory {
-            documentsList.append((document as NSString).lastPathComponent.replacingOccurrences(of: ".png", with: ""))
-        }
-        
-        return documentsList
-    }
-    
-    func readFromJSON(fileName: String, fileExtension: String) -> [String] {
-        // let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
-        let bundle = Bundle.init(for: CountryListManager.self)
-        let fileURL = bundle.url(forResource: fileName, withExtension: fileExtension)
-        let content = try? Data(contentsOf: fileURL!)
-        
-        if content != nil {
-            do {
-                let json = try JSONSerialization.jsonObject(with: content!, options: []) as! [String: [String]]
-                
-                return json["omittedCountries"]!
-            } catch let error as NSError {
-                //handle error
-                print(error.localizedDescription)
-                return []
-            }
-        }
-        
-        return []
     }
 }

@@ -269,6 +269,7 @@
 		204CC0E520FA8FF5004FD7E2 /* portugal.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBFE020FA8FF4004FD7E2 /* portugal.png */; };
 		204CC0E620FA8FF5004FD7E2 /* congokinshasa.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBFE120FA8FF4004FD7E2 /* congokinshasa.png */; };
 		204CC0E720FA8FF5004FD7E2 /* alandislands.png in Resources */ = {isa = PBXBuildFile; fileRef = 204CBFE220FA8FF4004FD7E2 /* alandislands.png */; };
+		20B50E7F2116CF8F00E9BFA4 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B50E7E2116CF8F00E9BFA4 /* FileHandler.swift */; };
 		20B5483520FA78D1000AF085 /* CountryPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B5483320FA78D1000AF085 /* CountryPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20B5483C20FA7984000AF085 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5483B20FA7984000AF085 /* Country.swift */; };
 		20B5483E20FA79BA000AF085 /* CountryListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B5483D20FA79BA000AF085 /* CountryListManager.swift */; };
@@ -540,6 +541,7 @@
 		204CBFE020FA8FF4004FD7E2 /* portugal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portugal.png; sourceTree = "<group>"; };
 		204CBFE120FA8FF4004FD7E2 /* congokinshasa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = congokinshasa.png; sourceTree = "<group>"; };
 		204CBFE220FA8FF4004FD7E2 /* alandislands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alandislands.png; sourceTree = "<group>"; };
+		20B50E7E2116CF8F00E9BFA4 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		20B5483020FA78D1000AF085 /* CountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B5483320FA78D1000AF085 /* CountryPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
 		20B5483420FA78D1000AF085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -833,14 +835,39 @@
 		20946D5921027EB1005C07D2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				20B50E7D2116CF4500E9BFA4 /* FileHandler */,
+				20B50E7C2116CF1500E9BFA4 /* CountryPickerUI */,
+				20B50E7B2116CEDC00E9BFA4 /* CountryInfo */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		20B50E7B2116CEDC00E9BFA4 /* CountryInfo */ = {
+			isa = PBXGroup;
+			children = (
+				20B5483F20FA79EC000AF085 /* ProcessCountryListOperation.swift */,
 				20B5483320FA78D1000AF085 /* CountryPicker.h */,
 				20B5483B20FA7984000AF085 /* Country.swift */,
 				20B5483D20FA79BA000AF085 /* CountryListManager.swift */,
-				20B5483F20FA79EC000AF085 /* ProcessCountryListOperation.swift */,
+			);
+			path = CountryInfo;
+			sourceTree = "<group>";
+		};
+		20B50E7C2116CF1500E9BFA4 /* CountryPickerUI */ = {
+			isa = PBXGroup;
+			children = (
 				20B5484120FA7A6C000AF085 /* CountryPickerTableViewControllerDelegate.swift */,
 				20B5484320FA7AFD000AF085 /* CountryPickerTableViewController.swift */,
 			);
-			path = Classes;
+			path = CountryPickerUI;
+			sourceTree = "<group>";
+		};
+		20B50E7D2116CF4500E9BFA4 /* FileHandler */ = {
+			isa = PBXGroup;
+			children = (
+				20B50E7E2116CF8F00E9BFA4 /* FileHandler.swift */,
+			);
+			path = FileHandler;
 			sourceTree = "<group>";
 		};
 		20B5482620FA78D1000AF085 = {
@@ -1211,6 +1238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B50E7F2116CF8F00E9BFA4 /* FileHandler.swift in Sources */,
 				20B5484020FA79EC000AF085 /* ProcessCountryListOperation.swift in Sources */,
 				20B5484420FA7AFD000AF085 /* CountryPickerTableViewController.swift in Sources */,
 				20B5484220FA7A6C000AF085 /* CountryPickerTableViewControllerDelegate.swift in Sources */,
