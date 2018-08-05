@@ -16,7 +16,18 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
 	* ISO Country Code (Ex. for Sri Lanka - LK)
  	* Locale ID for the country (Ex. for Sri Lanka - _LK)
  	* Flag Image Name (out of the 226 flags images files included within the library)
-* You can integrate above CountryPickerTableViewController with 5 lines of code (see bellow steps)
+* You can integrate above `CountryPickerTableViewController` with 5 lines of code (see bellow steps)
+
+### Development Road Map
+* DisplayOnlyCountriesArr
+* ShowExceptCountriesArr
+* Search Bar and enableSearchBar
+* Indexed Scroll Bar implementation and enableIndexedScrollBar
+* CountryPickerGridViewController & CountryPickerGridView
+* Flag images optimization
+* iOS Default Picker view customization along with a searchbar
+* UI Theming options
+
 
 ##Installation
 ###CocoaPods
@@ -33,24 +44,84 @@ You want to add pod 'countrypicker-ios-swift', '~> 1.2' similar to the following
 
 ```ruby
 target '<Your App Target Name>' do
-  pod 'countrypicker-ios-swift', '~> 1.2'
+  pod 'RVCountryPicker', '~> 1.2.4'
 end
 ```
 
 Then run a `pod install` inside your terminal, or from [CocoaPods.app](https://cocoapods.org/app).
 
+##Usage
+In your `AppDelegate.swift` file, import the `CountryPicker` library as follows:
+
+```ruby
+import RVCountryPicker
+```
+
+And then initiate the `CountryListManager` instance as follows, within the `application(_ application: didFinishLaunchingWithOptions:` method.
+
+```ruby
+let countryListManager = CountryListManager.shared
+countryListManager.processCountriesList(countryListManager: countryListManager)
+```
+
+Then you can initiate the `CountryPickerTableViewController` and push it into the `UINavigationController` view controllers stack as follows:
+
+```ruby
+import UIKit
+import RVCountryPicker
+
+class ViewController: UIViewController {
+
+    let tableViewController = CountryPickerTableViewController(style: .plain)
+    
+    override func viewDidLoad() {
+	    super.viewDidLoad()
+	
+	    // CountryPickerTableViewDelegate
+	    tableViewController.delegate = self
+        
+        // TextFieldDelegate
+        countryTxtFld.delegate = self
+        
+        // fetch a list of countries
+        let countryListManager = CountryListManager.shared
+        let countriesArr = countryListManager.countries
+        print("Countries: \(String(describing: countriesArr))")
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    	 // let's keep the keyboard hidden always for this demo's purpose
+        textField.resignFirstResponder()
+        
+        // push our CountryPickerTableViewController
+        self.navigationController?.pushViewController(tableViewController, animated: true)
+        
+        // Or, you can modally push the CountryPickerTableViewController (as it suites for your application), if so you have to change the presentationMethod to Modal as follows, so it knows how to dismiss it
+        tableViewController.presentationMethod = .MODAL
+        
+        // Then present it
+        self.present(tableViewController, animated: true, completion: nil)
+    }
+}
+
+extension ViewController: CountryPickerTableViewControllerDelegate {
+    
+    func didSelectCountry(country: Country?) {
+        if country != nil {
+            self.countryTxtFld.text = country?.name
+            self.countryFlagImgVw.image = country?.flagImage
+            self.countryCodeLbl.text = "ISO Country Code: \(country!.isoCountryCode)"
+        }
+    }
+}
+```
+Remember you definitely will have to implement the `CountryPickerTableViewControllerDelegate` protocol's `didSelectCountry(country:)` method, in order to receive the selected Country row related information as a Country object. (check the last extension in the given example)
+
 ##### Q: Why you should use this? 
 **A:** Because, you shouldn't bother and spend time on re-inventing the wheel again, even though you could and you are smart. And CountryPicker iOS Swift library is much lightweight and much flexible just like a piece of clay where you can play with and build up to any purpose you like.
-
-## Development Road Map
-* DisplayOnlyCountriesArr
-* ShowExceptCountriesArr
-* Search Bar and enableSearchBar
-* Indexed Scroll Bar implementation and enableIndexedScrollBar
-* CountryPickerGridViewController & CountryPickerGridView
-* Flag images optimization
-* iOS Default Picker view customization along with a searchbar
-* UI Theming options
 
 #### Note:
     - If you found anything wrong which I have done or may be a bug or any improvements suggestion, please help me to improve this codebase.
