@@ -8,6 +8,40 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
 </p>
 </p>
 
+## Features
+
+* You can easily get an array of Country Objects which includes following attributes per country object instance
+	* Index in alphabetical order (0 - 225)
+	* Country Name,
+	* ISO Country Code (Ex. for Sri Lanka - LK)
+ 	* Locale ID for the country (Ex. for Sri Lanka - _LK)
+ 	* Flag Image Name (out of the 226 flags images files included within the library)
+* You can integrate above CountryPickerTableViewController with 5 lines of code (see bellow steps)
+
+##Installation
+###CocoaPods
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate **CountryPicker** into your Xcode project using CocoaPods, specify it in your Podfile as follows:
+
+You want to add pod 'countrypicker-ios-swift', '~> 1.2' similar to the following to your Podfile:
+
+```ruby
+target '<Your App Target Name>' do
+  pod 'countrypicker-ios-swift', '~> 1.2'
+end
+```
+
+Then run a `pod install` inside your terminal, or from [CocoaPods.app](https://cocoapods.org/app).
+
+##### Q: Why you should use this? 
+**A:** Because, you shouldn't bother and spend time on re-inventing the wheel again, even though you could and you are smart. And CountryPicker iOS Swift library is much lightweight and much flexible just like a piece of clay where you can play with and build up to any purpose you like.
+
 ## Development Road Map
 * DisplayOnlyCountriesArr
 * ShowExceptCountriesArr
