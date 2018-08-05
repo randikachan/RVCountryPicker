@@ -42,4 +42,12 @@ public class Country: NSObject {
         self.name = name
         self.localeId = localeId
     }
+
+    public override var description: String {
+        return "\n{\n index: \(self.index),\n"
+            + " country: \(self.name),\n"
+            + " isoCountryCode: \(self.isoCountryCode),\n"
+            + " localeId: \(self.localeId),\n"
+            + " flagImageName: \(self.flagImageName!)\n}"
+    }
 }

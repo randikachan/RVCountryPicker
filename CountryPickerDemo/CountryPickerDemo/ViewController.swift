@@ -27,10 +27,15 @@ class ViewController: UIViewController {
         
         // TextFieldDelegate
         countryTxtFld.delegate = self
+        
+        // fetch a list of countries
+        let countryListManager = CountryListManager.shared
+        let countriesArr = countryListManager.countries
+        print("Countries: \(String(describing: countriesArr))")
     }
 }
 
-extension ViewController : CountryPickerTableViewControllerDelegate {
+extension ViewController: CountryPickerTableViewControllerDelegate {
     
     func didSelectCountry(country: Country?) {
         if country != nil {
@@ -41,7 +46,7 @@ extension ViewController : CountryPickerTableViewControllerDelegate {
     }
 }
 
-extension ViewController : UITextFieldDelegate {
+extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()

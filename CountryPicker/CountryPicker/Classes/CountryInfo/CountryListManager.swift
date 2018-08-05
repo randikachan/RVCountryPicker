@@ -16,7 +16,7 @@ public class CountryListManager {
     // MARK: -
     var countryListReady: Bool
     var ommitedCountriesArr: [String] = []  // Some countries have to be omitted because they don't have Flags
-    var countries: [Country] = []
+    public var countries: [Country] = []
     var countryFlagImageArr: [String] = []
     
     // Initialization
