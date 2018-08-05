@@ -10,6 +10,14 @@ import UIKit
 
 public class CountryPickerTableViewController: UITableViewController {
     
+    public enum PresentationMethod {
+        case MODAL
+        case PUSHED
+        case UNKNOWN
+    }
+    
+    public var presentationMethod: PresentationMethod = PresentationMethod.UNKNOWN
+    
     weak public var delegate: CountryPickerTableViewControllerDelegate?
     
     var countriesArr: [Country] = []
@@ -65,7 +73,11 @@ public class CountryPickerTableViewController: UITableViewController {
         print("\(selectedCountry.name)")
         delegate?.didSelectCountry(country: selectedCountry)
         
-        self.navigationController?.popViewController(animated: true)
+        if presentationMethod == .MODAL {
+            self.dismiss(animated: true, completion: nil)
+        } else if presentationMethod == .PUSHED || presentationMethod == .UNKNOWN {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }
