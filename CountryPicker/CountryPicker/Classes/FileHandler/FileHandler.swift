@@ -10,31 +10,31 @@ import Foundation
 
 public class FileHandler {
 
-    enum fileType: String {
+    public enum fileType: String {
         case PNG = ".png"
         case JPG = ".jpg"
     }
     
-    enum fileExtension: String {
+    public enum fileExtension: String {
         case JSON = "json"
         case XML = "xml"
     }
     
-    public static func getLocalFilesList(fileType: String) -> [String] {
+    public static func getLocalFilesList(fileType: fileType) -> [String] {
         let bundle = Bundle.init(for: CountryListManager.self)
-        let documentsInDirectory = bundle.paths(forResourcesOfType: fileType, inDirectory: nil)
+        let documentsInDirectory = bundle.paths(forResourcesOfType: fileType.rawValue, inDirectory: nil)
         
         var documentsList: [String] = []
         for document in documentsInDirectory {
-            documentsList.append((document as NSString).lastPathComponent.replacingOccurrences(of: fileType, with: ""))
+            documentsList.append((document as NSString).lastPathComponent.replacingOccurrences(of: fileType.rawValue, with: ""))
         }
         
         return documentsList
     }
     
-    public static func readFromJSON(fileName: String, fileExtension: String) -> [String] {
+    public static func readFromJSON(fileName: String, fileExtension: fileExtension) -> [String] {
         let bundle = Bundle.init(for: CountryListManager.self)
-        let fileURL = bundle.url(forResource: fileName, withExtension: fileExtension)
+        let fileURL = bundle.url(forResource: fileName, withExtension: fileExtension.rawValue)
         let content = try? Data(contentsOf: fileURL!)
         
         if content != nil {

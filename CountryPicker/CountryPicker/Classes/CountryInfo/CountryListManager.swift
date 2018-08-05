@@ -22,8 +22,8 @@ public class CountryListManager {
     // Initialization
     init() {
         self.countryListReady = false
-        self.ommitedCountriesArr = FileHandler.readFromJSON(fileName: "omittedCountries", fileExtension: "json")
-        self.countryFlagImageArr = FileHandler.getLocalFilesList(fileType: ".png")
+        self.ommitedCountriesArr = FileHandler.readFromJSON(fileName: "omittedCountries", fileExtension: .JSON)
+        self.countryFlagImageArr = FileHandler.getLocalFilesList(fileType: .PNG)
     }
     
     func getCountries() -> [Country] {
