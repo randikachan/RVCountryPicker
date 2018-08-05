@@ -22,8 +22,8 @@ public class CountryListManager {
     // Initialization
     init() {
         self.countryListReady = false
-        self.ommitedCountriesArr = self.readFromJSON(fileName: "ommitedCountries")
-        self.countryFlagImageArr = getFlagImageFilesList()
+        self.ommitedCountriesArr = self.readFromJSON(fileName: "omittedCountries", fileExtension: "json")
+        self.countryFlagImageArr = getLocalFilesList(fileType: ".png")
     }
     
     func getCountries() -> [Country] {
@@ -82,9 +82,9 @@ public class CountryListManager {
         queue.addOperation(processCountryListOperation)
     }
     
-    func getFlagImageFilesList() -> [String] {
+    func getLocalFilesList(fileType: String) -> [String] {
         let bundle = Bundle.init(for: CountryListManager.self)
-        let documentsInDirectory = bundle.paths(forResourcesOfType: ".png", inDirectory: nil)
+        let documentsInDirectory = bundle.paths(forResourcesOfType: fileType, inDirectory: nil)
         
         var documentsList: [String] = []
         for document in documentsInDirectory {
@@ -94,10 +94,10 @@ public class CountryListManager {
         return documentsList
     }
     
-    func readFromJSON(fileName: String) -> [String] {
+    func readFromJSON(fileName: String, fileExtension: String) -> [String] {
         // let bundle = Bundle.init(identifier: "com.hackerpunch.CountryPicker")
         let bundle = Bundle.init(for: CountryListManager.self)
-        let fileURL = bundle.url(forResource: "omittedCountries", withExtension: "json")
+        let fileURL = bundle.url(forResource: fileName, withExtension: fileExtension)
         let content = try? Data(contentsOf: fileURL!)
         
         if content != nil {
