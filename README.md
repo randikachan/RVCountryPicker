@@ -29,8 +29,8 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
 * UI Theming options
 
 
-##Installation
-###CocoaPods
+## Installation
+### CocoaPods
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 
@@ -50,7 +50,7 @@ end
 
 Then run a `pod install` inside your terminal, or from [CocoaPods.app](https://cocoapods.org/app).
 
-##Usage
+## Usage
 In your `AppDelegate.swift` file, import the `CountryPicker` library as follows:
 
 ```ruby
@@ -120,7 +120,7 @@ extension ViewController: CountryPickerTableViewControllerDelegate {
 ```
 Remember you definitely will have to implement the `CountryPickerTableViewControllerDelegate` protocol's `didSelectCountry(country:)` method, in order to receive the selected Country row related information as a Country object. (check the last extension in the given example)
 
-##### Q: Why you should use this? 
+### Q: Why you should use this? 
 **A:** Because, you shouldn't bother and spend time on re-inventing the wheel again, even though you could and you are smart. And CountryPicker iOS Swift library is much lightweight and much flexible just like a piece of clay where you can play with and build up to any purpose you like.
 
 #### Note:
@@ -133,7 +133,7 @@ Remember you definitely will have to implement the `CountryPickerTableViewContro
 This source code is made available under the MIT License.
 
 ```sh
-Copyright (c) 2016 Kasun Randika
+Copyright (c) 2016 Randika Vishman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
 of this software and associated documentation files (the "Software"), to deal 
