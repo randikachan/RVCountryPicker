@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "countrypicker-ios-swift"
-  s.version      = "1.2.1"
+  s.version      = "1.2.2"
   s.summary      = "Swift iOS library for CountryPicker and Countries List manager with images!"
   s.description  = <<-DESC
                   Swift iOS library for CountryPicker and Countries List with flag images for 225+ countries!
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/randikachan"
   s.platform     = :ios, "11.2"
   s.source       = { :git => "https://github.com/randikachan/countrypicker-ios-swift.git", :tag => "#{s.version}" }
-  s.source_files = "CountryPicker/CountryPicker/Classes/*.swift"
+  s.source_files = 'CountryPicker/CountryPicker/Classes/FileHandler/*.swift', 'CountryPicker/CountryPicker/Classes/CountryPickerUI/*.swift', 'CountryPicker/CountryPicker/Classes/CountryInfo/*.swift'
   s.resources = "CountryPicker/CountryPicker/Resources/*.{png,json}"
 
   # s.swift_version = "4.2" 
