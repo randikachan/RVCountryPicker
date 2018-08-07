@@ -8,6 +8,8 @@ Country Picker with flag images for iOS iPhone Apps, written in Swift. Currently
 </p>
 </p>
 
+### Latest Version 1.2.5
+
 ## Features
 
 * You can easily get an array of Country Objects which includes following attributes per country object instance
@@ -30,8 +32,8 @@ Country Picker with flag images for iOS iPhone Apps, written in Swift. Currently
 * UI Theming options
 
 
-## Installation
-### CocoaPods
+## Installation Guide
+### Use CocoaPods
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 
@@ -51,7 +53,7 @@ end
 
 Then run a `pod install` inside your terminal, or from [CocoaPods.app](https://cocoapods.org/app).
 
-## Usage
+## How to use
 In your `AppDelegate.swift` file, import the `CountryPicker` library as follows:
 
 ```ruby
