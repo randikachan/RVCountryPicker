@@ -1,6 +1,6 @@
-# countrypicker-ios-swift
+# RVCountryPicker iOS Swift library
 
-Country Picker with flags for iOS iPhone Apps, written in Swift. Currently support 226 countries.
+Country Picker with flag images for iOS iPhone Apps, written in Swift. Currently supports 225 countries, for the ISO country codes which is found within `NSLocale.isoCountryCodes` API.
 
 <p align="center">
 <img src="https://i.imgur.com/1gnTA4z.png" width="2000" height="550" alt="Real Device iPhone6S Vs iPhone6S Simulator"/><br/>
@@ -12,13 +12,14 @@ Country Picker with flags for iOS iPhone Apps, written in Swift. Currently suppo
 
 * You can easily get an array of Country Objects which includes following attributes per country object instance
 	* Index in alphabetical order (0 - 225)
-	* Country Name,
+	* Country Name (Ex. Sri Lanka)
 	* ISO Country Code (Ex. for Sri Lanka - LK)
  	* Locale ID for the country (Ex. for Sri Lanka - _LK)
- 	* Flag Image Name (out of the 226 flags images files included within the library)
+ 	* Flag Image Name (corresponding flag image name out of the 226 image files included within the library)
 * You can integrate above `CountryPickerTableViewController` with 5 lines of code (see bellow steps)
 
 ### Development Road Map
+
 * DisplayOnlyCountriesArr
 * ShowExceptCountriesArr
 * Search Bar and enableSearchBar
@@ -40,11 +41,11 @@ $ gem install cocoapods
 
 To integrate **CountryPicker** into your Xcode project using CocoaPods, specify it in your Podfile as follows:
 
-You want to add pod 'countrypicker-ios-swift', '~> 1.2' similar to the following to your Podfile:
+You can add pod 'RVCountryPicker', '~> 1.2.5' similar to the following to your Podfile:
 
 ```ruby
 target '<Your App Target Name>' do
-  pod 'RVCountryPicker', '~> 1.2.4'
+  pod 'RVCountryPicker', '~> 1.2.5'
 end
 ```
 
@@ -128,12 +129,14 @@ Remember you definitely will have to implement the `CountryPickerTableViewContro
     - You can always add up your valuable utility methods to this class which is related to the purpose of this library.
     - Don't forget to check out the Demo project simple implementation to get some more ideas.
 
+Flag Images Credit:
+[Flag images were designed by Freepik from Flaticon](https://www.flaticon.com/authors/freepik)
 
 ## License
 This source code is made available under the MIT License.
 
 ```sh
-Copyright (c) 2016 Randika Vishman
+Copyright (c) 2018 Randika Vishman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
 of this software and associated documentation files (the "Software"), to deal 
