@@ -20,6 +20,7 @@ public class FileHandler {
         case XML = "xml"
     }
     
+    // Get list of files which is packaged within the Library when the file type is given
     public static func getLocalFilesList(fileType: fileType) -> [String] {
         let bundle = Bundle.init(for: CountryListManager.self)
         let documentsInDirectory = bundle.paths(forResourcesOfType: fileType.rawValue, inDirectory: nil)
@@ -32,6 +33,7 @@ public class FileHandler {
         return documentsList
     }
     
+    // Read a locally stored JSON File
     public static func readFromJSON(fileName: String, fileExtension: fileExtension) -> [String] {
         let bundle = Bundle.init(for: CountryListManager.self)
         let fileURL = bundle.url(forResource: fileName, withExtension: fileExtension.rawValue)
